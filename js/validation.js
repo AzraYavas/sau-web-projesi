@@ -9,26 +9,11 @@ function jsIleKontrolEt() {
     let cinsiyetE = document.getElementById('erkek').checked;
     let cinsiyetK = document.getElementById('kadin').checked;
 
-    if (ad.trim() === "") {
-        document.getElementById('hataAd').style.display = 'block';
-        gecerli = false;
-    }
-    if (email.indexOf('@') === -1) {
-        document.getElementById('hataEmail').style.display = 'block';
-        gecerli = false;
-    }
-    if (sehir === "") {
-        document.getElementById('hataSehir').style.display = 'block';
-        gecerli = false;
-    }
-    if (!cinsiyetE && !cinsiyetK) {
-        document.getElementById('hataCinsiyet').style.display = 'block';
-        gecerli = false;
-    }
-    if (mesaj.trim() === "") {
-        document.getElementById('hataMesaj').style.display = 'block';
-        gecerli = false;
-    }
+    if (ad.trim() === "") { document.getElementById('hataAd').style.display = 'block'; gecerli = false; }
+    if (email.indexOf('@') === -1) { document.getElementById('hataEmail').style.display = 'block'; gecerli = false; }
+    if (sehir === "") { document.getElementById('hataSehir').style.display = 'block'; gecerli = false; }
+    if (!cinsiyetE && !cinsiyetK) { document.getElementById('hataCinsiyet').style.display = 'block'; gecerli = false; }
+    if (mesaj.trim() === "") { document.getElementById('hataMesaj').style.display = 'block'; gecerli = false; }
 
     if (gecerli) {
         document.getElementById('iletisimFormu').submit();
@@ -43,13 +28,8 @@ function loginKontrol() {
     let sifre = document.getElementById('logSifre').value;
     let gecerli = true;
 
-    if (email.trim() === "" || email.indexOf('@') === -1) {
-        document.getElementById('hataLogEmail').style.display = 'block';
-        gecerli = false;
-    }
-    if (sifre.trim() === "") {
-        document.getElementById('hataLogSifre').style.display = 'block';
-        gecerli = false;
-    }
+    if (email.trim() === "" || email.indexOf('@') === -1) { document.getElementById('hataLogEmail').style.display = 'block'; gecerli = false; }
+    if (sifre.trim() === "") { document.getElementById('hataLogSifre').style.display = 'block'; gecerli = false; }
+    
     return gecerli;
 }

@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API - Diziler</title>
+    <title>İlgi Alanlarım 🍿</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Web Projem</a>
+            <a class="navbar-brand" href="index.html">🌸 Benim Sayfam</a>
             <div class="collapse navbar-collapse" id="menum">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Hakkında</a></li>
                     <li class="nav-item"><a class="nav-link" href="cv.html">Özgeçmiş</a></li>
                     <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
-                    <li class="nav-item"><a class="nav-link" href="mirasımız.html">Mirasımız</a></li>
+                    <li class="nav-item"><a class="nav-link" href="miras.html">Mirasımız</a></li>
                     <li class="nav-item"><a class="nav-link active" href="ilgi.html">İlgi Alanlarım</a></li>
                     <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
                     <li class="nav-item"><a class="nav-link" href="login.html">Giriş Yap</a></li>
@@ -25,18 +25,27 @@
         </div>
     </nav>
 
-    <main class="container">
-        <h2 class="text-center my-4">TVMaze API - "Batman" Dizileri</h2>
-        <div class="row" id="diziListesi">
-            <!-- JS dosyamız burayı dolduracak -->
+    <main class="container my-5">
+        <h2 class="text-center mb-5" style="color: var(--secondary-color); font-weight: 800;">Favori Dizi & Filmlerim 🍿✨</h2>
+        
+        <!-- JavaScript ile dizi/filmler buraya dolacak -->
+        <div class="row" id="filmListesi"></div>
+
+        <!-- API Şartını Karşılayan Kısım -->
+        <div class="kutu-golge text-center mt-5 p-4 mx-auto" style="max-width: 500px;">
+            <h4 style="color: var(--secondary-color);">Sana Özel Tatlı Bir Kedi (API) 🐾</h4>
+            <p>API entegrasyonu kullanılarak rastgele çekilmiştir.</p>
+            <img id="kediGorseli" src="" alt="Tatlı Kedi" class="img-fluid" style="border-radius: 20px; max-height: 300px; object-fit: cover;">
         </div>
     </main>
 
     <footer>
-        <p class="mb-0">© 2024 Web Teknolojileri Projesi</p>
+        <div class="container">
+            <p class="mb-0">© 2024 ✨ Sevgiyle Kodlandı</p>
+        </div>
     </footer>
     
-    <!-- API Verisini çeken scriptimiz -->
     <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

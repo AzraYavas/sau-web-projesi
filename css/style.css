@@ -1,50 +1,112 @@
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+    --primary-color: #ff8fab;
+    --secondary-color: #fb6f92;
+    --bg-color: #ffe5ec;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --text-color: #5c4d53;
+}
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #f4f6f9;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+    color: var(--text-color);
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
+/* Navbar */
 .navbar {
-    background-color: #2c3e50;
-}
-
-.nav-link:hover {
-    color: #f39c12 !important;
-}
-
-main {
-    flex: 1;
-    padding-top: 30px;
-    padding-bottom: 50px;
-}
-
-footer {
-    background-color: #2c3e50;
-    color: white;
-    text-align: center;
+    background: rgba(255, 255, 255, 0.9) !important;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(255, 143, 171, 0.2);
+    border-radius: 0 0 25px 25px;
     padding: 15px 0;
-    margin-top: auto;
+}
+.navbar-brand {
+    color: var(--secondary-color) !important;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+.nav-link {
+    color: var(--text-color) !important;
+    font-weight: 600;
+    margin: 0 5px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+.nav-link:hover, .nav-link.active {
+    background-color: var(--primary-color);
+    color: white !important;
 }
 
+/* Cards (Kutularımız) */
 .kutu-golge {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border-radius: 10px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 143, 171, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    transition: transform 0.3s ease;
+    padding: 20px;
+}
+.kutu-golge:hover {
+    transform: translateY(-5px);
 }
 
-.carousel-item img {
-    height: 400px;
-    object-fit: cover;
-    border-radius: 10px;
+/* Butonlar */
+.btn-primary, .btn-success {
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+.btn-primary:hover, .btn-success:hover {
+    background-color: #e55b7e;
+    transform: scale(1.05);
+}
+.btn-light {
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+/* Form Elemanları */
+.form-control, .form-select {
+    border-radius: 15px;
+    border: 2px solid #ffc2d1;
+    padding: 12px;
+}
+.form-control:focus, .form-select:focus {
+    box-shadow: 0 0 10px rgba(255, 143, 171, 0.3);
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+/* Footer */
+footer {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto;
+    border-radius: 25px 25px 0 0;
+    font-weight: 700;
+}
+
+/* Görseller */
+img {
+    border-radius: 20px;
 }
 
 .hata-mesaji {
-    color: red;
-    font-size: 13px;
+    color: #e55b7e;
+    font-size: 14px;
     display: none;
     margin-top: 5px;
+    font-weight: 600;
 }
