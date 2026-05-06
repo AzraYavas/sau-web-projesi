@@ -3,99 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim 💌</title>
+    <title>İletişim - Portfolyo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Vue.js (Varsa projedeki kullanımına göre eklendi) -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">🌸 Benim Sayfam</a>
-            <div class="collapse navbar-collapse" id="menum">
+            <a class="navbar-brand" href="index.html">PORTFOLYO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Hakkında</a></li>
                     <li class="nav-item"><a class="nav-link" href="cv.html">Özgeçmiş</a></li>
                     <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
-                    <li class="nav-item"><a class="nav-link" href="miras.html">Mirasımız</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mirasımız.html">Mirasımız</a></li>
                     <li class="nav-item"><a class="nav-link" href="ilgi.html">İlgi Alanlarım</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="iletisim.html">İletişim</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.html">Giriş Yap</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="iletişim.html">İletişim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Giriş</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="container my-5" id="uygulama">
-        <div class="col-md-7 mx-auto kutu-golge p-5">
-            <h3 class="mb-4 text-center" style="color: var(--secondary-color); font-weight: 800;">Bana Ulaşın 💌</h3>
-            
-            <form id="iletisimFormu" action="php/iletisim_sonuc.php" method="POST">
-                <div class="mb-3">
-                    <label>Adınız Soyadınız ✨</label>
-                    <input type="text" class="form-control" name="ad" id="ad" v-model="formVeri.ad">
-                    <span class="hata-mesaji" id="hataAd">Lütfen adınızı giriniz.</span>
-                    <span class="hata-mesaji" v-if="hatalar.ad" style="display:block">{{ hatalar.ad }}</span>
+    <main class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="profile-card" id="app">
+                    <h2 class="text-center mb-4 text-primary-blue">Benimle İletişime Geçin</h2>
+                    <form action="php/formişlem.php" method="POST" id="contactForm" @submit="checkForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="isim" class="form-label text-muted fw-bold">Ad Soyad</label>
+                                <input type="text" class="form-control" id="isim" name="isim" v-model="form.isim" style="border-radius: 10px;">
+                                <small v-if="errors.isim" class="text-danger">{{ errors.isim }}</small>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label text-muted fw-bold">E-posta</label>
+                                <input type="email" class="form-control" id="email" name="email" v-model="form.email" style="border-radius: 10px;">
+                                <small v-if="errors.email" class="text-danger">{{ errors.email }}</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="konu" class="form-label text-muted fw-bold">Konu Seçiniz</label>
+                            <select class="form-select" id="konu" name="konu" v-model="form.konu" style="border-radius: 10px;">
+                                <option value="">Lütfen Seçiniz</option>
+                                <option value="is_teklifi">İş Teklifi</option>
+                                <option value="proje">Proje Danışmanlığı</option>
+                                <option value="diger">Diğer</option>
+                            </select>
+                            <small v-if="errors.konu" class="text-danger">{{ errors.konu }}</small>
+                        </div>
+                        <div class="mb-4">
+                            <label for="mesaj" class="form-label text-muted fw-bold">Mesajınız</label>
+                            <textarea class="form-control" id="mesaj" name="mesaj" rows="4" v-model="form.mesaj" style="border-radius: 10px;"></textarea>
+                            <small v-if="errors.mesaj" class="text-danger">{{ errors.mesaj }}</small>
+                        </div>
+                        
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary px-5 py-2 fw-bold" style="background-color: var(--accent-pink); border: none; border-radius: 10px;">Gönder</button>
+                            <button type="button" class="btn btn-secondary px-5 py-2 fw-bold ms-2" @click="temizle" style="border-radius: 10px;">Temizle</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="mb-3">
-                    <label>E-Posta Adresi 📬</label>
-                    <input type="text" class="form-control" name="email" id="email" v-model="formVeri.email">
-                    <span class="hata-mesaji" id="hataEmail">Geçerli bir e-posta giriniz.</span>
-                    <span class="hata-mesaji" v-if="hatalar.email" style="display:block">{{ hatalar.email }}</span>
-                </div>
-
-                <div class="mb-3">
-                    <label>Şehir 🏙️</label>
-                    <select class="form-select" name="sehir" id="sehir" v-model="formVeri.sehir">
-                        <option value="">Seçiniz</option>
-                        <option value="Bilecik">Bilecik</option>
-                        <option value="Sakarya">Sakarya</option>
-                        <option value="İstanbul">İstanbul</option>
-                    </select>
-                    <span class="hata-mesaji" id="hataSehir">Lütfen şehir seçiniz.</span>
-                    <span class="hata-mesaji" v-if="hatalar.sehir" style="display:block">{{ hatalar.sehir }}</span>
-                </div>
-
-                <div class="mb-3">
-                    <label class="d-block">Cinsiyet 👥</label>
-                    <input type="radio" name="cinsiyet" value="Erkek" id="erkek" v-model="formVeri.cinsiyet"> Erkek 
-                    <input type="radio" name="cinsiyet" value="Kadın" class="ms-2" id="kadin" v-model="formVeri.cinsiyet"> Kadın
-                    <br>
-                    <span class="hata-mesaji" id="hataCinsiyet">Cinsiyet seçimi zorunludur.</span>
-                    <span class="hata-mesaji" v-if="hatalar.cinsiyet" style="display:block">{{ hatalar.cinsiyet }}</span>
-                </div>
-
-                <div class="mb-3">
-                    <label class="d-block">Nelerle İlgilenirsin? 🎀</label>
-                    <input type="checkbox" name="ilgi[]" value="Yazılım" v-model="formVeri.ilgi"> Yazılım
-                    <input type="checkbox" name="ilgi[]" value="Tasarım" class="ms-2" v-model="formVeri.ilgi"> Tasarım
-                </div>
-
-                <div class="mb-4">
-                    <label>Mesajınız 💬</label>
-                    <textarea class="form-control" name="mesaj" id="mesaj" rows="3" v-model="formVeri.mesaj"></textarea>
-                    <span class="hata-mesaji" id="hataMesaj">Mesaj alanı boş geçilemez.</span>
-                    <span class="hata-mesaji" v-if="hatalar.mesaj" style="display:block">{{ hatalar.mesaj }}</span>
-                </div>
-
-                <div class="d-grid gap-2 d-md-block text-center">
-                    <button type="button" class="btn btn-secondary" onclick="jsIleKontrolEt()">Gönder (JS)</button>
-                    <button type="button" class="btn btn-success" @click="vueIleKontrolEt">Gönder (Vue.js)</button>
-                    <button type="reset" class="btn btn-light">Temizle</button>
-                </div>
-            </form>
+            </div>
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p class="mb-0">© 2024 ✨ Sevgiyle Kodlandı</p>
+            <p class="mb-0">© 2024 Web Teknolojileri Projesi | Sakarya Üniversitesi</p>
         </div>
     </footer>
 
-    <script src="js/validation.js"></script>
-    <script src="js/vue-validation.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/vue-validation.js"></script>
+    <script src="js/validation.js"></script>
 </body>
 </html>

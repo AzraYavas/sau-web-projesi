@@ -3,49 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İlgi Alanlarım 🍿</title>
+    <title>İlgi Alanlarım - Portfolyo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">🌸 Benim Sayfam</a>
-            <div class="collapse navbar-collapse" id="menum">
+            <a class="navbar-brand" href="index.html">PORTFOLYO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Hakkında</a></li>
                     <li class="nav-item"><a class="nav-link" href="cv.html">Özgeçmiş</a></li>
                     <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
-                    <li class="nav-item"><a class="nav-link" href="miras.html">Mirasımız</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mirasımız.html">Mirasımız</a></li>
                     <li class="nav-item"><a class="nav-link active" href="ilgi.html">İlgi Alanlarım</a></li>
-                    <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.html">Giriş Yap</a></li>
+                    <li class="nav-item"><a class="nav-link" href="iletişim.html">İletişim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Giriş</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <main class="container my-5">
-        <h2 class="text-center mb-5" style="color: var(--secondary-color); font-weight: 800;">Favori Dizi & Filmlerim 🍿✨</h2>
-        
-        <!-- JavaScript ile dizi/filmler buraya dolacak -->
-        <div class="row" id="filmListesi"></div>
+        <h1 class="text-center mb-2" style="color: var(--primary-blue); font-size: 3rem;">FAVORİ YAPIMLARIM</h1>
+        <p class="text-center text-muted mb-5">Sevdiğim diziler TVMaze API kullanılarak gerçek zamanlı çekilmektedir.</p>
 
-        <!-- API Şartını Karşılayan Kısım -->
-        <div class="kutu-golge text-center mt-5 p-4 mx-auto" style="max-width: 500px;">
-            <h4 style="color: var(--secondary-color);">Sana Özel Tatlı Bir Kedi (API) 🐾</h4>
-            <p>API entegrasyonu kullanılarak rastgele çekilmiştir.</p>
-            <img id="kediGorseli" src="" alt="Tatlı Kedi" class="img-fluid" style="border-radius: 20px; max-height: 300px; object-fit: cover;">
+        <div id="loading" class="text-center my-5">
+            <div class="spinner-border" style="color: var(--accent-pink);" role="status">
+                <span class="visually-hidden">Yükleniyor...</span>
+            </div>
+        </div>
+
+        <div class="api-grid" id="favorites-grid">
+            <!-- JS ile doldurulacak -->
         </div>
     </main>
 
     <footer>
         <div class="container">
-            <p class="mb-0">© 2024 ✨ Sevgiyle Kodlandı</p>
+            <p class="mb-0">© 2024 Web Teknolojileri Projesi | Sakarya Üniversitesi</p>
         </div>
     </footer>
-    
-    <script src="js/main.js"></script>
+
+    <script>
+        const favoritesGrid = document.getElementById('favorites-grid');
+        const loading = document.getElementById('loading');
+        
+        // Sevdiğiniz filmler/diziler
+        const favoriteTitles = ["Arcane", "Hunter x Hunter", "10 Things I Hate About You", "Iron Man", "The Amazing Spider-Man"];
+
+        async function fetchFavorites() {
+            try {
+                for (let title of favoriteTitles) {
+                    const response = await fetch(`https://api.tvmaze.com/search/shows?q=${title}`);
+                    const data = await response.json();
+                    
+                    if (data && data.length > 0) {
+                        const show = data[0].show;
+                        const imageUrl = show.image ? show.image.medium : 'https://via.placeholder.com/210x295?text=Gorsel+Yok';
+                        const year = show.premiered ? show.premiered.substring(0, 4) : 'Bilinmiyor';
+                        
+                        const cardHTML = `
+                            <div class="movie-card">
+                                <img src="${imageUrl}" class="movie-img" alt="${show.name}">
+                                <div class="movie-info">
+                                    <h3 class="movie-title">${show.name}</h3>
+                                    <span class="movie-year">${year}</span>
+                                    <p class="text-muted small mt-2 mb-0">${show.genres.join(', ') || 'Tür Yok'}</p>
+                                </div>
+                            </div>
+                        `;
+                        favoritesGrid.innerHTML += cardHTML;
+                    }
+                }
+            } catch (error) {
+                console.error("API Hatası:", error);
+                favoritesGrid.innerHTML = '<p class="text-danger w-100 text-center">Veriler çekilirken hata oluştu.</p>';
+            } finally {
+                loading.classList.add('d-none');
+            }
+        }
+
+        fetchFavorites();
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
