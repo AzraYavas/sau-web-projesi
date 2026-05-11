@@ -1,28 +1,51 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $sifre = $_POST['sifre'];
+// Öğrenci numarası ve mail bilgileri
+$dogru_email = "b2412100001@sakarya.edu.tr";
+$dogru_sifre = "b2412100001";
 
-    $parcalar = explode('@', $email);
-    $kullaniciAdi = $parcalar[0]; // b123456789 kısmı
-    
-    if (isset($parcalar[1]) && $parcalar[1] == 'sakarya.edu.tr' && $sifre === $kullaniciAdi) {
-        // Başarılı Giriş
-        echo "<!DOCTYPE html><html lang='tr'><head><meta charset='UTF-8'><title>Hoş Geldin 🌸</title>";
-        echo "<link href='../css/style.css' rel='stylesheet'></head><body style='display:flex; align-items:center; justify-content:center; height:100vh; background: var(--bg-color);'>";
-        echo "<div class='kutu-golge text-center p-5'>";
-        echo "<h1 style='color: var(--secondary-color); font-weight:800;'>Hoş Geldin, " . htmlspecialchars($kullaniciAdi) . "! ✨</h1>";
-        echo "<p class='mt-3 mb-4' style='font-size: 1.1rem;'>Sisteme başarıyla giriş yaptın.</p>";
-        echo "<a href='../index.html' class='btn btn-primary'>Ana Sayfaya Dön 🌸</a>";
-        echo "</div></body></html>";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
+
+    // Boş kontrolü
+    if (empty($email) || empty($password)) {
+        header("Location: ../login.html?error=1");
+        exit();
+    }
+
+    // Doğrulama
+    if ($email === $dogru_email && $password === $dogru_sifre) {
+        $ogrenci_no = explode('@', $email)[0];
+        
+        echo "<!DOCTYPE html>
+        <html lang='tr'>
+        <head>
+            <meta charset='UTF-8'>
+            <title>Hoşgeldiniz</title>
+            <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' rel='stylesheet'>
+            <style>
+                body { background-color: #fce7f3; font-family: 'Outfit', sans-serif; display: flex; align-items: center; justify-content: center; height: 100vh; }
+                .welcome-box { background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); text-align: center; }
+                h1 { color: #1e3a8a; font-weight: bold; }
+                span { color: #ec4899; }
+            </style>
+        </head>
+        <body>
+            <div class='welcome-box'>
+                <h1>Hoşgeldiniz <span>$ogrenci_no</span></h1>
+                <p class='mt-3'>Giriş işlemi başarıyla tamamlandı.</p>
+                <a href='../index.html' class='btn btn-primary mt-3' style='background-color: #ec4899; border:none; border-radius: 30px; padding: 10px 30px;'>Ana Sayfaya Dön</a>
+            </div>
+        </body>
+        </html>";
     } else {
-        // Başarısız Giriş
-        echo "<script>
-            alert('Hatalı giriş yaptın canım! Bilgilerini kontrol edip tekrar dener misin? 🌸');
-            window.location.href = '../login.html';
-        </script>";
+        // Hatalıysa login sayfasına geri gönder (hata parametresi ile)
+        header("Location: ../login.html?error=1");
+        exit();
     }
 } else {
+    // Doğrudan erişime kapat
     header("Location: ../login.html");
+    exit();
 }
 ?>

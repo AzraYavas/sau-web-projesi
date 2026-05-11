@@ -1,210 +1,108 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Inter:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
 
 :root {
-    --bg-color: #f3ece4; /* Bej Arka Plan */
-    --primary-blue: #1e3050; /* Koyu Lacivert */
-    --dark-blue: #132035;
-    --accent-pink: #ff6b81; /* Aksan Pembe */
-    --light-pink: #ffb6c1;
+    --primary-blue: #1e3a8a;
+    --primary-pink: #ec4899;
+    --bg-color: #fce7f3;
+    --text-color: #333;
     --white: #ffffff;
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Outfit', sans-serif;
     background-color: var(--bg-color);
-    color: var(--dark-blue);
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
+    color: var(--text-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', sans-serif;
-    font-weight: 900;
-}
-
-/* Navbar */
 .navbar {
-    background-color: var(--primary-blue);
-    padding: 1rem 0;
+    background-color: var(--primary-blue) !important;
 }
-.navbar-brand {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--white) !important;
-}
-.nav-link {
+
+.navbar-brand, .nav-link {
     color: var(--white) !important;
     font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-}
-.nav-link:hover, .nav-link.active {
-    color: var(--accent-pink) !important;
 }
 
-/* Kayan Yazı Animasyonu (Marquee) */
-.marquee-container {
-    background-color: var(--primary-blue);
-    color: var(--white);
-    padding: 10px 0;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    width: 100%;
-}
-.marquee-content {
-    display: inline-block;
-    animation: marquee 20s linear infinite;
-    font-family: 'Outfit', sans-serif;
-    font-weight: 700;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-}
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+.nav-link:hover {
+    color: var(--primary-pink) !important;
 }
 
-/* Hakkında (Hero) Kısmı */
+.hero-section {
+    padding: 5rem 0;
+    text-align: center;
+}
+
 .hero-title {
-    font-size: 5rem;
+    font-size: 4rem;
+    font-weight: 800;
     color: var(--primary-blue);
-    line-height: 1;
-    margin-bottom: 2rem;
-    text-transform: uppercase;
-}
-.hero-badge {
-    background-color: var(--accent-pink);
-    color: var(--white);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 1rem;
-    position: relative;
-    top: -20px;
-    left: 10px;
-    display: inline-block;
-    transform: rotate(-10deg);
+    margin-bottom: 1rem;
 }
 
-.profile-card {
-    background: var(--white);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    position: relative;
-    overflow: hidden;
-}
-.profile-card::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    right: -50px;
-    width: 150px;
-    height: 150px;
-    background: var(--light-pink);
-    border-radius: 50%;
-    z-index: 0;
-}
-.profile-img-wrapper {
-    position: relative;
-    z-index: 1;
-}
-.profile-img {
-    width: 100%;
-    border-radius: 50%;
-    border: 5px solid var(--white);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.hero-title span {
+    color: var(--primary-pink);
 }
 
-/* Eğitim ve Yetenekler Kutuları (Özgeçmiş) */
-.cv-section-title {
-    font-size: 3rem;
-    color: var(--white);
-    text-transform: uppercase;
-    margin: 0;
-}
-.education-box {
-    background-color: var(--accent-pink);
+.card-custom {
+    background-color: var(--white);
     border-radius: 20px;
-    padding: 30px;
-    color: var(--white);
-    margin-bottom: 2rem;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
 }
-.education-item {
-    background-color: var(--primary-blue);
-    padding: 15px 20px;
-    border-radius: 50px;
-    margin-bottom: 15px;
-    display: inline-block;
-    width: 100%;
+
+.card-custom:hover {
+    transform: translateY(-5px);
 }
-.skills-box {
-    background-color: var(--primary-blue);
-    border-radius: 20px;
-    padding: 30px;
-    color: var(--white);
-    text-align: center;
-    height: 100%;
-}
-.skill-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--white);
-    color: var(--primary-blue);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.star-icon {
+    color: var(--primary-pink);
     font-size: 2rem;
-    font-weight: 900;
-    margin: 0 auto 10px;
-    border: 3px solid var(--dark-blue);
 }
 
-/* API Kartları */
-.api-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 30px;
-}
-.movie-card {
-    background: var(--white);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
-    border: 2px solid transparent;
-}
-.movie-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent-pink);
-}
-.movie-img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-}
-.movie-info {
-    padding: 15px;
-}
-.movie-title {
-    font-size: 1.2rem;
-    color: var(--primary-blue);
-    margin-bottom: 5px;
-}
-.movie-year {
-    color: var(--accent-pink);
+.btn-custom {
+    background-color: var(--primary-pink);
+    color: var(--white);
+    border-radius: 30px;
+    padding: 10px 30px;
     font-weight: 600;
+    border: none;
+    transition: all 0.3s;
 }
 
-footer {
+.btn-custom:hover {
     background-color: var(--primary-blue);
     color: var(--white);
+}
+
+/* Specific elements for the vibe */
+.profile-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-img-container::before {
+    content: "✦";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    color: var(--primary-pink);
+    font-size: 4rem;
+    z-index: -1;
+}
+
+.footer {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 2rem 0;
     text-align: center;
-    padding: 20px 0;
-    margin-top: auto;
+    margin-top: 5rem;
+}
+
+/* Movie Cards */
+.movie-card img {
+    height: 300px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }

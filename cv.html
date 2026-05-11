@@ -3,90 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Özgeçmiş - Portfolyo</title>
+    <title>Özgeçmiş | Portfolyo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">PORTFOLYO</a>
+            <a class="navbar-brand" href="index.html">✦ Portfolyo</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Hakkında</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Hakkımda</a></li>
                     <li class="nav-item"><a class="nav-link active" href="cv.html">Özgeçmiş</a></li>
                     <li class="nav-item"><a class="nav-link" href="sehrim.html">Şehrim</a></li>
-                    <li class="nav-item"><a class="nav-link" href="mirasımız.html">Mirasımız</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mirasimiz.html">Mirasımız</a></li>
                     <li class="nav-item"><a class="nav-link" href="ilgi.html">İlgi Alanlarım</a></li>
-                    <li class="nav-item"><a class="nav-link" href="iletişim.html">İletişim</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.html">Giriş</a></li>
+                    <li class="nav-item"><a class="nav-link" href="iletisim.html">İletişim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <main class="container my-5">
-        <div class="row">
-            <!-- Sol Taraf: Eğitim -->
-            <div class="col-md-8">
-                <div class="education-box">
-                    <h2 class="cv-section-title mb-4">EDUCATION</h2>
+    <div class="container mt-5">
+        <header class="text-center mb-5">
+            <h1 class="hero-title">Eğitim <span>&</span> Deneyim</h1>
+            <p>Eğitim hayatım ve yeteneklerim hakkında detaylar.</p>
+        </header>
+
+        <section class="row">
+            <div class="col-md-8 mx-auto">
+                <article class="card-custom p-4 mb-4">
+                    <h3 style="color: var(--primary-pink);">Eğitim Bilgileri</h3>
+                    <hr>
+                    <h5>Üniversite</h5>
+                    <p><strong>Sakarya Üniversitesi</strong> - Bilgisayar Mühendisliği (2024 - Devam Ediyor)</p>
                     
-                    <h4 class="mb-3 text-white">Yabancı Diller</h4>
-                    <div class="education-item">
-                        <h5 class="mb-0">İngilizce</h5>
-                        <small>İleri Seviye</small>
-                    </div>
+                    <h5>Lise</h5>
+                    <p><strong>Anadolu Lisesi</strong> - Sayısal Bölüm (2020 - 2024)</p>
+                </article>
 
-                    <h4 class="mb-3 mt-4 text-white">Eğitim Durumu</h4>
-                    <div class="education-item">
-                        <h5 class="mb-0">Sakarya Üniversitesi - Günümüz</h5>
-                        <small>Bilgisayar Mühendisliği</small>
+                <article class="card-custom p-4 mb-4" style="background-color: var(--primary-blue); color: white;">
+                    <h3 style="color: var(--primary-pink);">Yetenekler (Soft Skills)</h3>
+                    <hr style="border-color: white;">
+                    <div class="d-flex justify-content-between flex-wrap">
+                        <span class="badge bg-light text-dark fs-6 m-1 p-2">Takım Çalışması</span>
+                        <span class="badge bg-light text-dark fs-6 m-1 p-2">Adaptasyon</span>
+                        <span class="badge bg-light text-dark fs-6 m-1 p-2">Empati</span>
+                        <span class="badge bg-light text-dark fs-6 m-1 p-2">Yaratıcılık</span>
                     </div>
-                    <div class="education-item">
-                        <h5 class="mb-0">Fen Lisesi - 2024</h5>
-                        <small>Fen Bilimleri</small>
-                    </div>
-                </div>
+                </article>
+
+                <article class="card-custom p-4 mb-4">
+                    <h3 style="color: var(--primary-pink);">Yazılım Yetenekleri</h3>
+                    <hr>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-transparent">HTML5 & CSS3</li>
+                        <li class="list-group-item bg-transparent">JavaScript & Vue.js</li>
+                        <li class="list-group-item bg-transparent">PHP</li>
+                        <li class="list-group-item bg-transparent">Bootstrap 5</li>
+                    </ul>
+                </article>
             </div>
-
-            <!-- Sağ Taraf: Beceriler -->
-            <div class="col-md-4">
-                <div class="skills-box">
-                    <h2 class="cv-section-title mb-4" style="writing-mode: vertical-rl; transform: rotate(180deg); float: left;">SKILLS</h2>
-                    <div class="d-flex flex-wrap justify-content-center">
-                        <div class="m-2">
-                            <div class="skill-icon">Ht</div>
-                            <span class="d-block mt-2">HTML5</span>
-                        </div>
-                        <div class="m-2">
-                            <div class="skill-icon">Cs</div>
-                            <span class="d-block mt-2">CSS3</span>
-                        </div>
-                        <div class="m-2">
-                            <div class="skill-icon">Js</div>
-                            <span class="d-block mt-2">JavaScript</span>
-                        </div>
-                        <div class="m-2">
-                            <div class="skill-icon">Ph</div>
-                            <span class="d-block mt-2">PHP</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <div class="marquee-container mt-auto">
-        <div class="marquee-content" style="background-color: var(--accent-pink);">
-            SOFT SKILLS: TEAM WORK - ADAPTABILITY - EMPATHY - CREATIVITY - TEAM WORK - ADAPTABILITY - EMPATHY
-        </div>
+        </section>
     </div>
 
+    <footer class="footer">
+        <p>&copy; 2026 Web Teknolojileri Projesi</p>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

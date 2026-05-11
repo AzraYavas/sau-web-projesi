@@ -1,35 +1,50 @@
-function jsIleKontrolEt() {
-    document.querySelectorAll('.hata-mesaji').forEach(e => e.style.display = 'none');
-    
-    let gecerli = true;
-    let ad = document.getElementById('ad').value;
-    let email = document.getElementById('email').value;
-    let sehir = document.getElementById('sehir').value;
-    let mesaj = document.getElementById('mesaj').value;
-    let cinsiyetE = document.getElementById('erkek').checked;
-    let cinsiyetK = document.getElementById('kadin').checked;
+document.addEventListener("DOMContentLoaded", function() {
+    const nativeBtn = document.getElementById("nativeBtn");
+    const errorDiv = document.getElementById("errorMessages");
+    const form = document.getElementById("contactForm");
 
-    if (ad.trim() === "") { document.getElementById('hataAd').style.display = 'block'; gecerli = false; }
-    if (email.indexOf('@') === -1) { document.getElementById('hataEmail').style.display = 'block'; gecerli = false; }
-    if (sehir === "") { document.getElementById('hataSehir').style.display = 'block'; gecerli = false; }
-    if (!cinsiyetE && !cinsiyetK) { document.getElementById('hataCinsiyet').style.display = 'block'; gecerli = false; }
-    if (mesaj.trim() === "") { document.getElementById('hataMesaj').style.display = 'block'; gecerli = false; }
+    if(nativeBtn) {
+        nativeBtn.addEventListener("click", function() {
+            let errors = [];
+            
+            const adsoyad = document.getElementById("adsoyad").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const telefon = document.getElementById("telefon").value.trim();
+            const konu = document.getElementById("konu").value;
+            const mesaj = document.getElementById("mesaj").value.trim();
+            const cinsiyet = document.querySelector('input[name="cinsiyet"]:checked');
+            const onay = document.getElementById("onay").checked;
 
-    if (gecerli) {
-        document.getElementById('iletisimFormu').submit();
+            if (adsoyad === "") errors.push("Ad Soyad alanı boş bırakılamaz.");
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email === "") {
+                errors.push("E-posta alanı boş bırakılamaz.");
+            } else if (!emailRegex.test(email)) {
+                errors.push("Geçerli bir e-posta adresi giriniz.");
+            }
+
+            // Phone validation (only numbers, exactly 10 or 11 digits)
+            const phoneRegex = /^[0-9]{10,11}$/;
+            if (telefon === "") {
+                errors.push("Telefon numarası boş bırakılamaz.");
+            } else if (!phoneRegex.test(telefon)) {
+                errors.push("Telefon numarası sadece rakamlardan oluşmalı ve 10-11 haneli olmalıdır.");
+            }
+
+            if (!cinsiyet) errors.push("Lütfen cinsiyet seçiniz.");
+            if (konu === "") errors.push("Lütfen bir konu seçiniz.");
+            if (mesaj === "") errors.push("Mesaj alanı boş bırakılamaz.");
+            if (!onay) errors.push("KVKK metnini onaylamanız gerekmektedir.");
+
+            if (errors.length > 0) {
+                errorDiv.innerHTML = errors.join("<br>");
+                errorDiv.classList.remove("d-none");
+            } else {
+                errorDiv.classList.add("d-none");
+                form.submit();
+            }
+        });
     }
-}
-
-function loginKontrol() {
-    document.getElementById('hataLogEmail').style.display = 'none';
-    document.getElementById('hataLogSifre').style.display = 'none';
-    
-    let email = document.getElementById('logEmail').value;
-    let sifre = document.getElementById('logSifre').value;
-    let gecerli = true;
-
-    if (email.trim() === "" || email.indexOf('@') === -1) { document.getElementById('hataLogEmail').style.display = 'block'; gecerli = false; }
-    if (sifre.trim() === "") { document.getElementById('hataLogSifre').style.display = 'block'; gecerli = false; }
-    
-    return gecerli;
-}
+});
