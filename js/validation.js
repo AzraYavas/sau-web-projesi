@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const adsoyad = document.getElementById("adsoyad").value.trim();
             const email = document.getElementById("email").value.trim();
             const telefon = document.getElementById("telefon").value.trim();
-            const konu = document.getElementById("konu").value;
+            const sehir = document.getElementById("sehir").value;
             const mesaj = document.getElementById("mesaj").value.trim();
             const cinsiyet = document.querySelector('input[name="cinsiyet"]:checked');
             const onay = document.getElementById("onay").checked;
@@ -34,9 +34,9 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             if (!cinsiyet) errors.push("Lütfen cinsiyet seçiniz.");
-            if (konu === "") errors.push("Lütfen bir konu seçiniz.");
+            if (sehir === "") errors.push("Lütfen bir şehir seçiniz.");
             if (mesaj === "") errors.push("Mesaj alanı boş bırakılamaz.");
-            if (!onay) errors.push("KVKK metnini onaylamanız gerekmektedir.");
+            if (!onay) errors.push("Kullanım koşullarını kabul etmeniz gerekmektedir.");
 
             if (errors.length > 0) {
                 errorDiv.innerHTML = errors.join("<br>");

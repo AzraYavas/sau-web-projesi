@@ -6,8 +6,25 @@
     <title>İletişim | Portfolyo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+
     <!-- Vue 3 -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .form-bg {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            border: 2px solid rgba(236, 72, 153, 0.2); /* Hafif pembe border */
+        }
+        .form-control, .form-select {
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 0 0.25rem rgba(236, 72, 153, 0.25);
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
@@ -32,54 +49,66 @@
 
     <div class="container mt-5" id="app">
         <div class="row">
-            <div class="col-md-8 mx-auto card-custom p-5">
-                <h2 class="hero-title text-center" style="font-size: 2.5rem;">Bana <span>Ulaşın</span></h2>
+            <div class="col-md-10 mx-auto form-bg shadow-sm">
+                
+                <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+                    <h2 class="hero-title m-0" style="font-size: 2.5rem;">Benimle <span>İletişime Geçin</span></h2>
+                    <a href="index.html" class="btn btn-outline-primary rounded-pill px-4 mt-3 mt-md-0">Ana Sayfaya Dön</a>
+                </div>
                 
                 <div id="errorMessages" class="alert alert-danger d-none mt-3"></div>
                 <div v-if="vueErrors.length" class="alert alert-danger mt-3">
-                    <ul>
+                    <ul class="mb-0">
                         <li v-for="error in vueErrors" :key="error">{{ error }}</li>
                     </ul>
                 </div>
 
                 <form id="contactForm" action="php/formislem.php" method="POST" class="mt-4">
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Ad Soyad</label>
-                        <input type="text" class="form-control" name="adsoyad" id="adsoyad" v-model="formData.adsoyad">
+                    <div class="row">
+                        <!-- Sol Kolon -->
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Ad Soyad</label>
+                            <input type="text" class="form-control" name="adsoyad" id="adsoyad" v-model="formData.adsoyad">
+                        </div>
+                        <!-- Sağ Kolon -->
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">E-posta</label>
+                            <input type="text" class="form-control" name="email" id="email" v-model="formData.email">
+                        </div>
                     </div>
                     
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">E-posta Adresi</label>
-                        <input type="text" class="form-control" name="email" id="email" v-model="formData.email">
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Telefon Numarası</label>
-                        <input type="text" class="form-control" name="telefon" id="telefon" placeholder="05554443322" v-model="formData.telefon">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Telefon</label>
+                            <input type="text" class="form-control" name="telefon" id="telefon" v-model="formData.telefon">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">Yaşadığınız Şehir</label>
+                            <select class="form-select" name="sehir" id="sehir" v-model="formData.sehir">
+                                <option value="">Şehir Seçiniz...</option>
+                                <option value="İstanbul">İstanbul</option>
+                                <option value="Ankara">Ankara</option>
+                                <option value="İzmir">İzmir</option>
+                                <option value="Bursa">Bursa</option>
+                                <option value="Antalya">Antalya</option>
+                                <option value="Bilecik">Bilecik</option>
+                                <option value="Sakarya">Sakarya</option>
+                            </select>
+                        </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Cinsiyet</label>
-                        <div>
-                            <div class="form-check form-check-inline">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold d-block">Cinsiyet</label>
+                            <div class="form-check form-check-inline mt-1">
                                 <input class="form-check-input" type="radio" name="cinsiyet" id="erkek" value="Erkek" v-model="formData.cinsiyet">
                                 <label class="form-check-label" for="erkek">Erkek</label>
                             </div>
-                            <div class="form-check form-check-inline">
+                            <div class="form-check form-check-inline mt-1">
                                 <input class="form-check-input" type="radio" name="cinsiyet" id="kadin" value="Kadın" v-model="formData.cinsiyet">
                                 <label class="form-check-label" for="kadin">Kadın</label>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label fw-bold">Konu</label>
-                        <select class="form-select" name="konu" id="konu" v-model="formData.konu">
-                            <option value="">Seçiniz</option>
-                            <option value="İş Teklifi">İş Teklifi</option>
-                            <option value="Proje">Proje</option>
-                            <option value="Diğer">Diğer</option>
-                        </select>
                     </div>
 
                     <div class="mb-3">
@@ -91,14 +120,14 @@
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="onay" id="onay" value="Evet" v-model="formData.onay">
                             <label class="form-check-label" for="onay">
-                                KVKK metnini okudum ve onaylıyorum.
+                                Kullanım koşullarını kabul ediyorum.
                             </label>
                         </div>
                     </div>
 
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                        <button type="button" class="btn btn-primary px-4 py-2 me-md-2" id="nativeBtn">Native JS ile Gönder</button>
-                        <button type="button" class="btn btn-success px-4 py-2" @click="validateWithVue">Vue.js ile Gönder</button>
+                    <div class="d-grid gap-3 d-md-flex justify-content-md-center mt-4">
+                        <button type="button" class="btn btn-primary px-5 py-2 rounded-pill fw-bold" id="nativeBtn">Klasik JS ile gönder</button>
+                        <button type="button" class="btn btn-custom px-5 py-2" @click="validateWithVue">Vue.js ile gönder</button>
                     </div>
                 </form>
             </div>

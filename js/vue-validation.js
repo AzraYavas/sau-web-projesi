@@ -8,7 +8,7 @@ createApp({
                 email: '',
                 telefon: '',
                 cinsiyet: '',
-                konu: '',
+                sehir: '',
                 mesaj: '',
                 onay: false
             },
@@ -34,9 +34,9 @@ createApp({
             }
 
             if (!this.formData.cinsiyet) this.vueErrors.push("Vue: Cinsiyet seçiniz.");
-            if (!this.formData.konu) this.vueErrors.push("Vue: Konu seçiniz.");
+            if (!this.formData.sehir) this.vueErrors.push("Vue: Şehir seçiniz.");
             if (!this.formData.mesaj) this.vueErrors.push("Vue: Mesaj yazınız.");
-            if (!this.formData.onay) this.vueErrors.push("Vue: KVKK onayı gerekli.");
+            if (!this.formData.onay) this.vueErrors.push("Vue: Kullanım koşullarını kabul ediniz.");
 
             if (this.vueErrors.length === 0) {
                 // Hata yoksa formu submit et
