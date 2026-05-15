@@ -75,7 +75,7 @@
             return true;
         }
 
-        // PHP de hata var mı diye kontrol
+        // Check if there's an error from PHP
         const urlParams = new URLSearchParams(window.location.search);
         if(urlParams.get('error') === '1') {
             const alertBox = document.getElementById('loginAlert');

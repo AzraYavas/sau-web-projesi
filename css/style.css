@@ -75,7 +75,7 @@ body {
     color: var(--white);
 }
 
-/* Sitenin vibeı için */
+/* Specific elements for the vibe */
 .profile-img-container {
     position: relative;
     display: inline-block;
@@ -99,7 +99,7 @@ body {
     margin-top: 5rem;
 }
 
-/* Fiilm kartları */
+/* Movie Cards */
 .movie-card img {
     height: 300px;
     object-fit: cover;

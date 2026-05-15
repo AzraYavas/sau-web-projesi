@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Sadece ilgi.html sayfasında çalısırssssssssssssssss
+    // Only run this script if we are on the ilgi.html page
     const moviesContainer = document.getElementById('movies-container');
     if (!moviesContainer) return;
 
-    // Favori dizi ve filmler listesi
+    // List of favorite movies/series
     const favorites = [
         "10 things i hate about you",
         "arcane",
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "rick and morty"
     ];
 
-    const apiKey = '4a3b711b'; // demo amaçlı Public OMDB API Key
+    const apiKey = '4a3b711b'; // Public OMDB API Key for demo purposes
 
     const fetchMovieData = async (title) => {
         try {
