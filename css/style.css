@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+
+:root {
+    --primary-blue: #1e3a8a;
+    --primary-pink: #ec4899;
+    --bg-color: #fce7f3;
+    --text-color: #333;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.navbar {
+    background-color: var(--primary-blue) !important;
+}
+
+.navbar-brand, .nav-link {
+    color: var(--white) !important;
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: var(--primary-pink) !important;
+}
+
+.hero-section {
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    margin-bottom: 1rem;
+}
+
+.hero-title span {
+    color: var(--primary-pink);
+}
+
+.card-custom {
+    background-color: var(--white);
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.card-custom:hover {
+    transform: translateY(-5px);
+}
+
+.star-icon {
+    color: var(--primary-pink);
+    font-size: 2rem;
+}
+
+.btn-custom {
+    background-color: var(--primary-pink);
+    color: var(--white);
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s;
+}
+
+.btn-custom:hover {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+/* Sitenin vibeı için */
+.profile-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-img-container::before {
+    content: "✦";
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    color: var(--primary-pink);
+    font-size: 4rem;
+    z-index: -1;
+}
+
+.footer {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    margin-top: 5rem;
+}
+
+/* Fiilm kartları */
+.movie-card img {
+    height: 300px;
+    object-fit: cover;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
